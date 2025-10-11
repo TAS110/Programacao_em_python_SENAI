@@ -1,54 +1,56 @@
 
-## 1 - Crie um programa para efetuar a leitura de 
-# um número inteiro e apresentar o resultado do 
-# quadrado deste número.
+# 1. Imprima uma mensagem de boas-vindas
+print("Seja bem-vindo(a) ao nosso programa!")
 
-n1  =  int(input('numero = '))
-calcular = n1 ** 2
-print(calcular)
+# 2. Declare uma variável booleana verdadeiro com o valor True e imprima seu tipo
+valor_booleano = True
+print("Valor da variável:",valor_booleano)
 
+# 3. Imprima o resultado da multiplicação de dois números decimais
+n1 = 2.5
+n2 = 4.2
+multiplicaçao = n1 * n2
+print("Multiplicação de dois decimais =", multiplicaçao)
 
+# 4. Imprima o resultado da divisão (/) de dois números inteiros
+n1 = 10
+n2 = 3
+divisao = n1 / n2
+print("Divisão de dois inteiros =", divisao)
 
+# 5. Imprima o resultado da subtração de dois números inteiros
+n1 = 15
+n2 = 7
+subtracao = n1 - n2
+print("Subtração de dois inteiros: n1 - n2 =", subtracao)
 
-## 2 - Crie duas variáveis para armazenar 
-# seu primeiro nome e sobrenome. Em seguida, 
-# concatene-as para formar seu nome completo 
-# e exiba o resultado.
+# 6. Imprima o resultado da divisão inteira (//) de dois números inteiros
+n1 = 10
+n2 = 3
+divisao_inteira = n1 // n2
+print("Divisão inteira de dois inteiros =", divisao_inteira)
 
-nome = 'Thayna'
-sobrenome = 'Araujo'
-print(nome, sobrenome)
+# 7. Imprima o resultado da multiplicação de 4 números decimais
+n1 = 1.2
+n2 = 2.5
+n3 = 0.5
+n4 = 3.3
+multi_4_decimais = n1 * n2 * n3 * n4
+print("Multiplicação de 4 decimais =", multi_4_decimais)
 
+# 8. Declare uma variável numero e imprima o dobro
+n1 = 7
+dobro = n1 * 2
+print("Número:", n1)
+print("Dobro do número:", dobro)
 
+# 9. Sistema de cadastro simples
+print("Sistema de Cadastro")
+nome = input("Digite seu nome: ")
+idade = input("Digite sua idade: ")
+email = input("Digite seu e-mail: ")
 
-
-## 3 - Peça ao usuário para digitar dois 
-# números inteiros e armazene-os em variáveis. 
-# Realize a concatenação desses números como 
-# strings e exiba o resultado.
-
-n1  =  int(input('Digite 1º numero inteiro = '))
-n2  =  int(input('Digite o 2º numero inteiro = '))
-print(str(n1),str(n2))
-
-
-
-## 4 - Crie uma variável para armazenar 
-# a palavra "Python". Em seguida, adicione 
-# um número inteiro ao final da palavra usando 
-# a concatenação e exiba o resultado.
-
-palavra  =  'Python'
-n = 16
-print(palavra,16)
-
-
-
-## 5 - Declare uma variável contendo uma 
-# frase. Em seguida, peça ao usuário para 
-# digitar uma palavra e concatene essa 
-# palavra no final da frase. Exiba o resultado.
-
-frase  =  'Minha comida favorita é'
-nome = input('Nome da comida')
-print(frase,nome)
+print("Cadastro realizado com sucesso!")
+print("Nome:", nome)
+print("Idade:", idade)
+print("E-mail:", email)
