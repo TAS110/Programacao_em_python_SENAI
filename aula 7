@@ -1,0 +1,35 @@
+# EXERCÍCIO 0: Gerar e imprimir números pares de 2 a 20
+print("Exercício 0: Números pares de 2 a 20")
+for numero in range(2, 21, 2):
+    print(numero)
+print("-" * 30)  
+
+# EXERCÍCIO 1: Criar e imprimir uma lista de 1 a 10
+print("Exercício 1: Criar e imprimir uma lista de 1 a 10")
+numeros = list(range(1, 11))
+print(numeros)
+print("-" * 30)
+
+# EXERCÍCIO 2: Acessar e imprimir o terceiro elemento da lista
+print("Exercício 2: Acessar e imprimir o terceiro elemento da lista")
+terceiro_elemento = numeros[2]
+print(terceiro_elemento)
+print("-" * 30)
+
+# EXERCÍCIO 3: Adicionar o número 9 à lista
+print("Exercício 3: Adicionar o número 9 à lista")
+numeros.append(9)
+print(numeros)
+print("-" * 30)
+
+# EXERCÍCIO 4: Remover o número 5 da lista
+print("Exercício 4: Remover o número 5 da lista")
+numeros.remove(5)
+print(numeros)
+print("-" * 30)
+
+# EXERCÍCIO 5: Concatenar listas
+print("Exercício 5: Concatenar listas")
+carros = ["BMW", "Corsa", "Ferrari"]
+lista_concatenada = numeros + carros
+print(lista_concatenada)
