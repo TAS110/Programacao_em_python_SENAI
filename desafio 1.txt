@@ -1,0 +1,73 @@
+print(" Bem-vindo ao Hotel Resort!\n")
+
+# Cadastro de até 3 clientes
+cliente1_nome = input("Digite o nome do 1º cliente: ")
+cliente1_idade = int(input(f"Digite a idade de {cliente1_nome}: "))
+
+cliente2_nome = input("\nDigite o nome do 2º cliente: ")
+cliente2_idade = int(input(f"Digite a idade de {cliente2_nome}: "))
+
+cliente3_nome = input("\nDigite o nome do 3º cliente: ")
+cliente3_idade = int(input(f"Digite a idade de {cliente3_nome}: "))
+
+# Lista com os tipos de quarto e preços
+quartos = ["Simples", "Duplo", "Luxo"]
+precos = [100, 150, 250]
+
+# --- Cliente 1 ---
+print(f"\nEscolha o tipo de quarto para {cliente1_nome}:")
+print("1 - Simples (R$100/dia)\n2 - Duplo (R$150/dia)\n3 - Luxo (R$250/dia)")
+cliente1_opcao = int(input("Digite o número do quarto: "))
+cliente1_dias = int(input(f"Quantos dias {cliente1_nome} ficará no hotel? "))
+
+if cliente1_opcao == 1:
+    cliente1_total = precos[0] * cliente1_dias
+    cliente1_quarto = quartos[0]
+elif cliente1_opcao == 2:
+    cliente1_total = precos[1] * cliente1_dias
+    cliente1_quarto = quartos[1]
+elif cliente1_opcao == 3:
+    cliente1_total = precos[2] * cliente1_dias
+    cliente1_quarto = quartos[2]
+
+
+# --- Cliente 2 ---
+print(f"\nEscolha o tipo de quarto para {cliente2_nome}:")
+print("1 - Simples (R$100/dia)\n2 - Duplo (R$150/dia)\n3 - Luxo (R$250/dia)")
+cliente2_opcao = int(input("Digite o número do quarto: "))
+cliente2_dias = int(input(f"Quantos dias {cliente2_nome} ficará no hotel? "))
+
+if cliente2_opcao == 1:
+    cliente2_total = precos[0] * cliente2_dias
+    cliente2_quarto = quartos[0]
+elif cliente2_opcao == 2:
+    cliente2_total = precos[1] * cliente2_dias
+    cliente2_quarto = quartos[1]
+elif cliente2_opcao == 3:
+    cliente2_total = precos[2] * cliente2_dias
+    cliente2_quarto = quartos[2]
+
+
+# --- Cliente 3 ---
+print(f"\nEscolha o tipo de quarto para {cliente3_nome}:")
+print("1 - Simples (R$100/dia)\n2 - Duplo (R$150/dia)\n3 - Luxo (R$250/dia)")
+cliente3_opcao = int(input("Digite o número do quarto: "))
+cliente3_dias = int(input(f"Quantos dias {cliente3_nome} ficará no hotel? "))
+
+if cliente3_opcao == 1:
+    cliente3_total = precos[0] * cliente3_dias
+    cliente3_quarto = quartos[0]
+elif cliente3_opcao == 2:
+    cliente3_total = precos[1] * cliente3_dias
+    cliente3_quarto = quartos[1]
+elif cliente3_opcao == 3:
+    cliente3_total = precos[2] * cliente3_dias
+    cliente3_quarto = quartos[2]
+
+# --- Resultados ---
+print("\n RESUMO DAS RESERVAS ")
+print(f"{cliente1_nome} ({cliente1_idade} dias) - Quarto {cliente1_quarto} - Total: R${cliente1_total:.2f}")
+print(f"{cliente2_nome} ({cliente2_idade} dias) - Quarto {cliente2_quarto} - Total: R${cliente2_total:.2f}")
+print(f"{cliente3_nome} ({cliente3_idade} dias) - Quarto {cliente3_quarto} - Total: R${cliente3_total:.2f}")
+
+print("\ncadrastro concluido!!")
