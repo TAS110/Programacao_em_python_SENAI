@@ -1,0 +1,52 @@
+import statistics
+
+# Dados das empresas
+empresa1 = [1000,6000,1200,8000,1400]
+empresa2 = [5000, 4000, 3000, 2000, 7000]
+empresa3 = [1200, 1300, 8000, 3000, 15000]
+empresa4 = [1400, 1750, 2000, 4500, 5900]
+
+def analisar_empresa(nome, lista):
+    media = statistics.mean(lista)
+    mediana = statistics.median(lista)
+    try:
+        moda = statistics.mode(lista)
+    except statistics.StatisticsError:
+        moda = "Sem moda"
+    desvio = statistics.stdev(lista)
+
+    print(f"\n {nome}")
+    print(f"Salários: {lista}")
+    print(f"Média: R$ {media:.2f}")
+    print(f"Mediana: R$ {mediana:.2f}")
+    print(f"Moda: {moda}")
+    print(f"Desvio padrão: {desvio:.2f}")
+
+    return {
+        "empresa": nome,
+        "media": media,
+        "desvio": desvio,
+        "mediana": mediana
+    }
+
+# Executar análises
+resultados = []
+resultados.append(analisar_empresa("Empresa 1", empresa1))
+resultados.append(analisar_empresa("Empresa 2", empresa2))
+resultados.append(analisar_empresa("Empresa 3", empresa3))
+resultados.append(analisar_empresa("Empresa 4", empresa4))
+
+# Escolha baseada em análise
+print("\n Decisão:")
+melhor_media = max(resultados, key=lambda x: x["media"])
+menor_desvio = min(resultados, key=lambda x: x["desvio"])
+
+print(f"A empresa com maior média salarial é: {melhor_media['empresa']} (R$ {melhor_media['media']:.2f})")
+print(f"A empresa com menor variação (mais estável) é: {menor_desvio['empresa']} (Baixo valor  {menor_desvio['desvio']:.2f})")
+# Decisão do analista
+if melhor_media["empresa"] == menor_desvio["empresa"]:
+    print(f" Decisão: Escolho {melhor_media['empresa']}, pois tem alta média e estabilidade.")
+else:
+    print(f" Decisão: Escolho {melhor_media['empresa']} pela média mais alta, "
+          f"mas ficaria atento à carga horaria")
+  
