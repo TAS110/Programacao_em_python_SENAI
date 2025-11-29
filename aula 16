@@ -1,0 +1,129 @@
+import pygame
+
+pygame.init()
+
+# -----------------------------
+# CONFIGURAÇÕES DA TELA
+# -----------------------------
+CELL = 30
+COLS = 20
+ROWS = 15
+
+WIDTH = COLS * CELL
+HEIGHT = ROWS * CELL
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Labirinto (Somente pygame)")
+
+clock = pygame.time.Clock()
+
+# -----------------------------
+# CORES
+# -----------------------------
+WHITE = (255, 255, 255)
+BLUE  = (0, 0, 255)
+RED   = (255, 0, 0)
+GREEN = (0, 255, 0)
+
+# -----------------------------
+# MATRIZ DO LABIRINTO
+# -----------------------------
+maze = [
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1],
+    [1,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,1,1,0,1],
+    [1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1],
+    [1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,1],
+    [1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,1],
+    [1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1],
+    [1,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1],
+    [1,0,1,1,1,1,1,1,0,1,0,1,1,1,0,1,0,1,0,1],
+    [1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,1],
+    [1,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1,0,1,0,1],
+    [1,0,0,0,0,1,0,0,0,0,0,1,0,1,0,1,0,1,0,1],
+    [1,0,1,1,0,1,1,1,1,1,0,1,0,1,0,1,0,1,0,1],
+    [1,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1],
+    [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+]
+
+# SAÍDA (vencível)
+exit_row = 13
+exit_col = 18
+exit_x = exit_col * CELL
+exit_y = exit_row * CELL
+
+# JOGADOR
+player_x = 1 * CELL + 5
+player_y = 1 * CELL + 5
+player_size = CELL - 10
+speed = 3
+
+# -----------------------------
+# DESENHA LABIRINTO
+# -----------------------------
+def draw_maze():
+    for r in range(ROWS):
+        for c in range(COLS):
+            if maze[r][c] == 1:
+                pygame.draw.rect(screen, BLUE, (c * CELL, r * CELL, CELL, CELL))
+
+# -----------------------------
+# COLISÃO
+# -----------------------------
+def can_move(x, y):
+    col = x // CELL
+    row = y // CELL
+    return maze[row][col] == 0
+
+# -----------------------------
+# LOOP PRINCIPAL
+# -----------------------------
+running = True
+won = False
+
+while running:
+    screen.fill(WHITE)
+
+    # eventos
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    if not won:
+        new_x = player_x
+        new_y = player_y
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            new_x -= speed
+        if keys[pygame.K_RIGHT]:
+            new_x += speed
+        if keys[pygame.K_UP]:
+            new_y -= speed
+        if keys[pygame.K_DOWN]:
+            new_y += speed
+
+        if can_move(new_x, player_y):
+            player_x = new_x
+        if can_move(player_x, new_y):
+            player_y = new_y
+
+    draw_maze()
+
+    # saída
+    pygame.draw.rect(screen, GREEN, (exit_x, exit_y, CELL, CELL))
+
+    # jogador
+    pygame.draw.rect(screen, RED, (player_x, player_y, player_size, player_size))
+
+    # vitória
+    if abs(player_x - exit_x) < 10 and abs(player_y - exit_y) < 10:
+        won = True
+        font = pygame.font.SysFont(None, 60)
+        text = font.render("VOCÊ GANHOU!", True, GREEN)
+        screen.blit(text, (150, 200))
+
+    pygame.display.update()
+    clock.tick(60)
+
+pygame.quit()
